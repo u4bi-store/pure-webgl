@@ -19,11 +19,53 @@
 
 <!-- 버텍스 셰이더 작성 -->
 <script id="2d-vertex-shader" type="notjs">
+    /*
+        WebgL은 단지 클립 좌표계와 색상을 도출하는데 목적이 있음.
+
+        개발자는 이 목적을 달성하기 위해 WebGL에 2개의 셰이더를 제공해야 함.
+
+        버텍스 셰이더는 클립 좌표계의 값을 제공
+        프래그먼트 셰이더는 색상을 제공
+
+        셰이더는 GPU가 어떻게 그림을 그려야 하는지 알려주는 명령 코드
+        GLSL라는 특수 언어로 작성할 수 있음.
+
+    */
+
+    /* GLSL로 작성된 클립 좌표값을 도출할 버텍스 세이터 코드
+
+       WebGL 좌표계 설명 : https://myounggun.github.io/webgl-coord/
+    */
+    
+    /*  클립 좌표계는 canvas 크기에 상관 없이 항상 -1 ~ +1의 범위를 가짐
+        [위 설명 링크의 클립 영역 참조]
+
+    */
+
+    attribute vec4 a_position; // attribute는 buffer로 부터 데이터를 받을 것임.
+
+    /* 모든 데이터는 main 함수를 가짐 */
+    void main(){
+
+        /* gl_Position은 버텍스 셰이더에서 설정을 담당하는 특수한 변수 */
+        gl_Position = a_position;
+
+        
+
+    }
+
+
 </script>
  
 <!-- 프래그먼트 셰이더 작성 -->
 <script id="2d-fragment-shader" type="notjs">
 </script>
+
+<!-- 설명
+
+    위의 스크립트 두곳은 각각 버텍스 셰이더와 프래그먼트 셰이더가 작성됨
+
+-->
 
 <!--
     type=”notjs”에 주목해보면 notjs가 무엇을 의미한다기 보다
@@ -54,9 +96,4 @@
 
 </script>
 
-<!-- 설명
-
-    2, 3번은 각각 버텍스 셰이더와 프래그먼트 셰이더가 작성됨
-
--->
 </html>
