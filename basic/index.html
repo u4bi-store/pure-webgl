@@ -12,9 +12,36 @@
 </head>
 <body>
   
+  <!-- 캔버스 정의 WebGL로 렌더링한 결과가 표시 됨 -->
   <canvas id="container"></canvas>
 
 </body>
+
+<!-- 버텍스 셰이더 작성 -->
+<script id="2d-vertex-shader" type="notjs">
+</script>
+ 
+<!-- 프래그먼트 셰이더 작성 -->
+<script id="2d-fragment-shader" type="notjs">
+</script>
+
+<!--
+    type=”notjs”에 주목해보면 notjs가 무엇을 의미한다기 보다
+    브라우저에게 여기에서 작성된 코드는 javascript가 아닌
+    그 무엇도 아닌 코드다라고 알려줌
+
+    즉 브라우저는 <script></script> 내에 작성된 문자열을 따로 해석하지 않고
+    화면 출력도 없이 넘어감.
+
+    여기서는 <script>내에 작성되지만 셰이더 코드는 그저 텍스일 뿐임
+    ajax로 가져와도 되고 javascript의 하나의 변수에 작성해도 무방함.
+-->
+
+<!-- WebGL 자바스크립트 코드를 작성함
+     이곳에는 일반 javacript 코드와 셰이더를 컴파일하고
+     셰이더에서 쓰일 데이터를 공급해주며
+     실행하기 위해 WebGL API로 작성된 javascript 코드들이 작성 됨.
+-->
 <script>
     var
         container;
@@ -26,4 +53,10 @@
     }
 
 </script>
+
+<!-- 설명
+
+    2, 3번은 각각 버텍스 셰이더와 프래그먼트 셰이더가 작성됨
+
+-->
 </html>
